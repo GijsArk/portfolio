@@ -501,8 +501,9 @@ Responsive Design
 
 @media (max-width: 768px) {
     .main-header { padding: 1rem 8vw; }
-    .main-nav { flex-direction: row; justify-content: flex-end; }
+    .main-nav { flex-direction: row; justify-content: flex-start; }
     .main-nav ul li:not(:has(.contact-button)) { display: none; } /* Verbergt de tekstlinks op mobiele schermen, contactknop blijft */
+
     main > section { padding: 2.5rem clamp(1rem, 5vw, 3rem); }
     
     .skills-grid { grid-template-columns: 1fr; } /* Op tablets en mobiel 1 kolom voor betere leesbaarheid */
@@ -519,7 +520,8 @@ Responsive Design
         height: 100vh;
     }
     #hero .hero-image {
-        display: none; /* Verbergt de grote achtergrondfoto op mobiel voor een schonere look */
+        width: 175vw; /* Maakt de container (en dus de afbeelding) 1.5x breder dan het scherm */
+        transform: translateX(70vw); /* Schuift de vergrote afbeelding mooi naar rechts uitgelijnd */
     }
     #hero .hero-content {
         padding: 0 8vw;

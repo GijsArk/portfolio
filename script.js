@@ -116,6 +116,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 clone.setAttribute('aria-hidden', 'true'); // Verbergt klonen voor schermlezers
                 experienceGrid.appendChild(clone);
             });
+            
+            // Voegt perfecte touch-ondersteuning toe voor telefoons
+            document.addEventListener('touchstart', (e) => {
+                if (e.target.closest('.experience-grid')) {
+                    experienceGrid.classList.add('paused-by-touch');
+                } else {
+                    experienceGrid.classList.remove('paused-by-touch');
+                }
+            }, { passive: true });
         }
     }
 
