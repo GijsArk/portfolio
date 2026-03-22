@@ -158,7 +158,7 @@ Hero Section
     position: absolute;
     right: 0;
     bottom: 0;
-    width: 60vw;
+    width: 100vw;
     height: 100%;
     background-image: linear-gradient(to bottom, rgba(5, 5, 5, 0) 75%, #050505 100%), url("Images/Zakelijk%20uitgesneden%20ZW.png");
     background-size: contain;
@@ -520,8 +520,10 @@ Responsive Design
         height: 100vh;
     }
     #hero .hero-image {
-        width: 175vw; /* Maakt de container (en dus de afbeelding) 1.5x breder dan het scherm */
-        transform: translateX(70vw); /* Schuift de vergrote afbeelding mooi naar rechts uitgelijnd */
+        width: 175vw; /* Container mag weer normaal breed zijn door onze nieuwe schaal-methode */
+        background-size: auto 100%; /* Blijft ook op telefoons extra groot */
+        background-position: right bottom; /* Reset positie voor mobiel */
+        transform: translateX(70vw); /* Schuift de grote afbeelding iets naar rechts zodat je tekst leesbaar blijft */
     }
     #hero .hero-content {
         padding: 0 8vw;
