@@ -1,0 +1,498 @@
+/*
+:root
+Defines the color palette and base font settings for the entire site.
+*/
+:root {
+    --background-color: #050505; /* OLED Black */
+    --text-color: #f1f5f9;
+    --text-muted: #94a3b8;
+    --accent-color: #3b82f6;
+    --accent-gradient: linear-gradient(135deg, #2563eb, #60a5fa);
+    --card-color: rgba(255, 255, 255, 0.03);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --font-family: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+}
+
+/*
+Global Resets & Typography
+*/
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    margin: 0;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+    color: #ffffff;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); }
+h2.section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+p { color: var(--text-muted); margin: 0 0 1rem 0; }
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s var(--ease-spring);
+}
+a:hover { color: #ffffff; }
+
+main > section {
+    padding: 2rem clamp(1rem, 5vw, 3rem); /* Zorgt voor consistente padding aan de zijkanten, schaalt mooi mee op mobiel */
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/*
+Header & Navigation
+*/
+.main-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    pointer-events: none; /* Zorgt dat je door de onzichtbare balk heen kunt klikken */
+    padding: 1rem clamp(1rem, 5vw, 3rem);
+}
+
+.main-nav {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.main-nav .logo {
+    display: none;
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    pointer-events: auto;
+}
+
+.main-nav ul li a:not(.contact-button) {
+    color: var(--text-muted); /* Gebruikt de subtiele grijze kleur */
+    font-weight: 500;
+}
+
+.main-nav ul li a:not(.contact-button):hover {
+    color: #ffffff;
+}
+
+.main-nav a.contact-button {
+    position: fixed; /* Zet de knop vast ten opzichte van je beeldscherm */
+    top: 1.5rem; /* Afstand vanaf de bovenkant */
+    right: clamp(1rem, 5vw, 3rem); /* Afstand vanaf rechts, schaalt mooi mee op mobiel */
+    z-index: 9999; /* Zorgt dat hij altijd vooraan over je foto en teksten heen zweeft */
+    pointer-events: auto; /* Zorgt dat de knop zélf wel klikbaar blijft */
+    background: var(--accent-gradient);
+    color: #ffffff;
+    padding: 0.5rem 1.25rem;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: opacity 0.3s var(--ease-spring), transform 0.3s var(--ease-spring), box-shadow 0.3s var(--ease-spring);
+    border: 1px solid rgba(255,255,255,0.1);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+}
+body.scrolled .main-nav a.contact-button {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+body.scrolled .main-nav a.contact-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+    color: #fff;
+}
+
+/*
+Hero Section
+*/
+#hero {
+    height: 100vh;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+    background-color: var(--background-color);
+    position: relative;
+    overflow: hidden;
+}
+#hero .hero-image {
+    width: 100%;
+    grid-area: 1 / 1;
+    justify-self: end;
+    width: 80vw;
+    height: 100%;
+    background-image: linear-gradient(to bottom, rgba(5, 5, 5, 0) 75%, #050505 100%), url("Images/Zakelijk%20uitgesneden%20ZW.png");
+    background-size: contain;
+    background-position: right bottom;
+    background-repeat: no-repeat;
+}
+#hero .hero-content {
+    grid-area: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 12vw;
+    text-align: left;
+    z-index: 2;
+}
+#hero h1 {
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-family: var(--font-family);
+    letter-spacing: -0.04em;
+    margin-bottom: 0;
+    line-height: 1.1;
+}
+#hero .subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    color: var(--accent-color);
+    margin-top: 0;
+    margin-bottom: 3rem;
+}
+#hero .hero-btn {
+    display: inline-block;
+    align-self: flex-start;
+    padding: 0.75rem 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+    background: transparent;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.9rem;
+    transition: all 0.3s var(--ease-spring);
+}
+#hero .hero-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/*
+About Section
+*/
+#about {
+    text-align: center;
+    max-width: 800px;
+}
+#about h2 { margin-bottom: 1rem; }
+
+/*
+Experience Timeline
+*/
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 2rem auto;
+    --scroll-progress: 0%; /* Deze variabele wordt door het script hierboven geüpdatet */
+}
+.timeline::before { /* The vertical line */
+    content: '';
+    position: absolute;
+    left: 9px;
+    top: 5px; /* Zorgt dat de lijn exact in het midden van het eerste bolletje (5px top + 10px center) begint */
+    bottom: 25px; /* Zorgt dat de lijn stopt direct na het laatste bolletje */
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent-color) var(--scroll-progress), var(--border-color) var(--scroll-progress));
+    z-index: 1;
+}
+.timeline-item {
+    padding-left: 40px;
+    position: relative;
+    margin-bottom: 3rem;
+    cursor: pointer;
+}
+.timeline-item:last-child {
+    margin-bottom: 0; /* Zorgt dat de verticale lijn stopt direct na de tekst van het laatste item */
+}
+.timeline-dot {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    height: 20px;
+    width: 20px;
+    background: var(--background-color);
+    border: 2px solid black; /* Maakt de cirkel standaard zwart */
+    border-radius: 50%;
+    z-index: 0;
+    transition: background-color 0.3s var(--ease-spring), border-color 0.3s var(--ease-spring), transform 0.3s var(--ease-spring), box-shadow 0.3s var(--ease-spring);
+}
+/* Wordt blauw zodra de scroll-lijn het bolletje passeert. Het eerste bolletje is altijd blauw. */
+.timeline-item.active .timeline-dot,
+.timeline-item:first-child .timeline-dot {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.4);
+    z-index: 2;
+}
+.timeline-item.active:hover .timeline-dot,
+.timeline-item:first-child:hover .timeline-dot {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    transform: scale(1.2);
+    box-shadow: 0 0 15px rgba(37, 99, 235, 0.6);
+    z-index: 2;
+}
+.timeline-content { transition: transform 0.3s var(--ease-spring); }
+.timeline-item.active:hover .timeline-content,
+.timeline-item:first-child:hover .timeline-content { transform: translateX(5px); }
+.timeline-content h3 { margin: 0 0 0.25rem 0; color: #ffffff; }
+.timeline-content p { 
+    margin: 0; 
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/*
+Skills Grid
+*/
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Standaard 4 kolommen op grote schermen */
+    gap: 1.5rem;
+}
+.skill-card {
+    background-color: var(--card-color);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-spring), border-color 0.4s ease;
+}
+.skill-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+.skill-card h4 { margin: 0 0 0.5rem 0; color: var(--accent-color); }
+
+/*
+Experience Marquee (Programma's)
+*/
+.experience-container {
+    overflow: hidden;
+    width: 100%;
+    width: 100vw; /* Zorgt voor de volledige schermbreedte */
+    position: relative;
+    left: 50%; /* Zet de start van de container exact in het midden van het scherm */
+    transform: translateX(-50%); /* Schuift de container precies 50% van zijn eigen breedte terug naar links */
+    padding: 1.5rem 0; /* Voorkomt dat het glow-effect wordt afgesneden */
+}
+.experience-grid {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    animation: marquee 25s linear infinite;
+}
+.experience-grid:hover {
+    animation-play-state: paused;
+}
+.experience-card {
+    width: 200px; /* Iets kleiner, perfect voor vierkante/ronde software logo's */
+    flex-shrink: 0;
+    background-color: var(--card-color);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centreert het logo horizontaal en verticaal */
+    transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-spring), border-color 0.4s ease;
+}
+.experience-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+.experience-card img {
+    max-width: 100%;
+    max-height: 80px;
+    object-fit: contain; /* Zorgt dat logo's nooit vervormen, zelfs niet bij vreemde afmetingen */
+}
+
+/*
+Modal (Dialog)
+*/
+.modal {
+    background: var(--card-color);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    color: var(--text-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 2.5rem;
+    width: 90%;
+    max-width: 650px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+}
+.modal[open] { animation: modalScaleIn 0.4s var(--ease-spring) forwards; }
+.modal::backdrop {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+.modal-content h3 { color: var(--accent-color); margin-top: 0; }
+.modal-close-btn {
+    display: inline-block;
+    background: var(--accent-gradient);
+    color: #ffffff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    font-weight: 500;
+    transition: transform 0.3s var(--ease-spring), box-shadow 0.3s var(--ease-spring);
+}
+.modal-close-btn:hover { 
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+}
+
+/*
+Animations
+*/
+@keyframes modalScaleIn {
+    from { opacity: 0; transform: scale(0.95) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s var(--ease-spring), transform 0.8s var(--ease-spring);
+}
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* De Marquee Animatie voor de Skills Grid */
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 0.75rem)); } /* Verschuift precies de helft van de container, plus de helft van de gap */
+}
+
+/*
+Footer
+*/
+.main-footer {
+    padding: 2rem clamp(1rem, 5vw, 3rem);
+    border-top: 1px solid var(--border-color);
+}
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    color: var(--text-muted);
+}
+.footer-content a { font-weight: 500; }
+
+/*
+Responsive Design
+*/
+@media (min-width: 769px) {
+    .timeline {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .timeline::before { left: 50%; transform: translateX(-50%); }
+    .timeline-item { width: 50%; margin-bottom: 4rem; }
+    
+    /* Alternating pattern */
+    .timeline-item:nth-child(odd) {
+        align-self: flex-start;
+        padding-right: 40px; padding-left: 0;
+        text-align: right;
+    }
+    .timeline-item:nth-child(even) {
+        align-self: flex-end;
+        padding-left: 40px;
+    }
+    .timeline-item:nth-child(odd) .timeline-dot { left: auto; right: -10px; }
+    .timeline-item:nth-child(even) .timeline-dot { left: -10px; }
+    
+    .timeline-item.active:nth-child(odd):hover .timeline-content,
+    .timeline-item:first-child:hover .timeline-content { transform: translateX(-5px); }
+    .timeline-item.active:nth-child(even):hover .timeline-content { transform: translateX(5px); }
+}
+
+/* Zorgt dat de 4 kaarten niet in elkaar drukken op middelgrote schermen (zoals tablets of kleine laptops) */
+@media (max-width: 1024px) {
+    .skills-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .main-nav { flex-direction: row; justify-content: flex-end; }
+    .main-nav ul li:not(:has(.contact-button)) { display: none; } /* Verbergt de tekstlinks op mobiele schermen, contactknop blijft */
+    main > section { padding: 2.5rem clamp(1rem, 5vw, 3rem); }
+    
+    /* Herstel de Hero op mobiele schermen voor betere leesbaarheid */
+    #hero {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+    }
+    #hero .hero-image {
+        grid-column: 1;
+        grid-row: 2;
+        width: 100%;
+        justify-self: center;
+        opacity: 1;
+        background-position: center bottom;
+    }
+    #hero .hero-content {
+        grid-column: 1;
+        grid-row: 1;
+        padding-top: 8rem;
+        padding-left: 8vw;
+        padding-right: 8vw;
+    }
+    #hero .subtitle { 
+        margin-bottom: 2rem; 
+    }
+}
+@media (max-width: 480px) {
+    .footer-content { flex-direction: column; gap: 0.5rem; }
+    .skills-grid { grid-template-columns: 1fr; } /* 1 kolom op telefoons */
+}
