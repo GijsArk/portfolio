@@ -148,30 +148,28 @@ Hero Section
     max-width: 100%;
     margin: 0;
     padding: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-columns: 1fr;
+    display: flex;
+    align-items: center;
     background-color: var(--background-color);
     position: relative;
     overflow: hidden;
 }
 #hero .hero-image {
-    width: 100%;
-    grid-area: 1 / 1;
-    justify-self: end;
-    width: 80vw;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 60vw;
     height: 100%;
     background-image: linear-gradient(to bottom, rgba(5, 5, 5, 0) 75%, #050505 100%), url("Images/Zakelijk%20uitgesneden%20ZW.png");
     background-size: contain;
     background-position: right bottom;
     background-repeat: no-repeat;
+    z-index: 1;
 }
 #hero .hero-content {
-    grid-area: 1 / 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     padding-left: 12vw;
+    width: 100%;
+    max-width: 800px;
     text-align: left;
     z-index: 2;
 }
@@ -251,7 +249,7 @@ Experience Timeline
     position: absolute;
     left: 9px;
     top: 5px; /* Zorgt dat de lijn exact in het midden van het eerste bolletje (5px top + 10px center) begint */
-    bottom: 25px; /* Zorgt dat de lijn stopt direct na het laatste bolletje */
+    bottom: 75px; /* Zorgt dat de lijn stopt direct na het laatste bolletje */
     width: 2px;
     background: linear-gradient(to bottom, var(--accent-color) var(--scroll-progress), var(--border-color) var(--scroll-progress));
     z-index: 1;
@@ -304,6 +302,17 @@ Experience Timeline
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
+
+.timeline-content .read-more {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--accent-color);
+    font-weight: 500;
+    opacity: 0.7;
+    transition: opacity 0.3s var(--ease-spring);
+}
+.timeline-item:hover .timeline-content .read-more { opacity: 1; }
 
 /*
 Skills Grid
@@ -496,6 +505,10 @@ Responsive Design
     .main-nav ul li:not(:has(.contact-button)) { display: none; } /* Verbergt de tekstlinks op mobiele schermen, contactknop blijft */
     main > section { padding: 2.5rem clamp(1rem, 5vw, 3rem); }
     
+    .skills-grid { grid-template-columns: 1fr; } /* Op tablets en mobiel 1 kolom voor betere leesbaarheid */
+    .experience-card { width: 140px; padding: 1.5rem; }
+    .experience-card img { max-height: 60px; }
+
     .about-layout {
         grid-template-columns: 1fr;
         gap: 2.5rem;
@@ -503,23 +516,13 @@ Responsive Design
 
     /* Herstel de Hero op mobiele schermen voor betere leesbaarheid */
     #hero {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto 1fr;
+        height: 100vh;
     }
     #hero .hero-image {
-        grid-column: 1;
-        grid-row: 2;
-        width: 100%;
-        justify-self: center;
-        opacity: 1;
-        background-position: center bottom;
+        display: none; /* Verbergt de grote achtergrondfoto op mobiel voor een schonere look */
     }
     #hero .hero-content {
-        grid-column: 1;
-        grid-row: 1;
-        padding-top: 8rem;
-        padding-left: 8vw;
-        padding-right: 8vw;
+        padding: 0 8vw;
     }
     #hero .subtitle { 
         margin-bottom: 2rem; 
@@ -527,5 +530,9 @@ Responsive Design
 }
 @media (max-width: 480px) {
     .footer-content { flex-direction: column; gap: 0.5rem; }
-    .skills-grid { grid-template-columns: 1fr; } /* 1 kolom op telefoons */
+    
+    .modal { padding: 1.5rem; width: 95%; } /* Geeft de tekst meer ademruimte in popups op smalle telefoons */
+    .modal-content h3 { font-size: 1.25rem; }
+    
+    #hero h1 { font-size: 2.5rem; }
 }

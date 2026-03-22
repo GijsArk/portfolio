@@ -25,9 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     const rect = timeline.getBoundingClientRect();
                     const triggerPoint = window.innerHeight * 0.8; // Start met vullen als de tijdlijn op 80% van het scherm is
                     
-                    // Bereken exacte start en hoogte van de visuele lijn (top: 15px, bottom: 25px in CSS)
-                    const lineStart = rect.top + 15; 
-                    const lineEnd = rect.bottom - 25;
+                    // Bereken exacte start en hoogte van de visuele lijn (top: 5px, bottom: 75px in CSS)
+                    const lineStart = rect.top + 5; 
+                    const lineEnd = rect.bottom - 75;
                     const lineHeight = lineEnd - lineStart;
                     
                     let progress = 0;
