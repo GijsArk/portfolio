@@ -14,7 +14,9 @@
 
     <header class="main-header">
         <nav class="main-nav">
-            <a href="#" class="logo">Gijs Arkink</a>
+            <a href="#hero" class="logo">
+                <img src="Images/neo-03.png" alt="Gijs Arkink Logo">
+            </a>
             <ul>
                 <li><a href="#about">Over Mij</a></li>
                 <li><a href="#experience">Tijdlijn</a></li>
@@ -35,12 +37,27 @@
             <div class="hero-image"></div>
         </section>
 
-        <section id="about">
-            <div class="about-container fade-in">
-                <h2 class="section-title">Over Mij</h2>
-                <p>Welkom. Ik ben Gijs Arkink, een gedreven en betrouwbare engineer met een passie voor continue groei. Ik combineer mijn achtergrond in mechatronica met een groeiende expertise in softwareontwikkeling om complexe technische vraagstukken op te lossen en mijn steentje bij te dragen aan de wereld van engineering.</p>
+    <section id="about">
+        <div class="about-container fade-in">
+            <h2 class="section-title">Over Mij</h2>
+            <div class="about-layout">
+                <div class="about-text">
+                    <p>
+                        <strong>Welkom op mijn portfoliowebsite!</strong> Mijn naam is <strong>Gijs Arkink</strong> (1999), een enthousiaste en gedreven engineer woonachtig in Enschede. Mijn passie ligt bij het ontwerpen en realiseren van complexe <strong>mechatronische systemen</strong> en de bijbehorende <strong>industriële automatisering</strong>. Ik streef er voortdurend naar om technische grenzen te verleggen en mijn expertise verder te verdiepen.
+                    </p>
+                    <p>
+                        Als persoon sta ik bekend om mijn <strong>betrouwbaarheid, eerlijkheid en doorzettingsvermogen</strong>. Ik ben ervan overtuigd dat deze eigenschappen de basis vormen voor elke succesvolle technische samenwerking. Of het nu gaat om het uitwerken van een innovatief ontwerp of het oplossen van een complex technisch vraagstuk; ik bijt me vast in de materie en rust niet voordat er een optimaal resultaat staat.
+                    </p>
+                    <p>
+                        Buiten mijn professionele passie voor techniek zoek ik graag de uitdaging op in beweging en vrijheid. Om scherp en energiek te blijven, ben ik regelmatig in de <strong>sportschool</strong> te vinden of verleg ik mijn grenzen tijdens het <strong>hardlopen</strong>. Daarnaast geniet ik van de vrijheid en de techniek tijdens het rijden op de <strong>motor</strong>. Deze actieve levensstijl weerspiegelt mijn werkmentaliteit: een gezonde discipline en altijd gericht op de volgende verbetering.
+                    </p>
+                </div>
+                <div class="about-image">
+                    <img src="Images/FotoGijs2.jpg" alt="Foto van Gijs Arkink">
+                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
         <section id="experience">
             <h2 class="section-title fade-in">Tijdlijn</h2>
@@ -50,7 +67,7 @@
                     <div class="timeline-content fade-in">
                         <h3>Destinus</h3>
                         <p>Systems Engineer | 2026 - heden</p>
-                        <p>Afstudeerstage HBO | 2024</p>
+                        <p>Afstudeerproject HBO | 2024</p>
                     </div>
                 </div>
                 <div class="timeline-item" data-modal-id="engineero-modal">
@@ -91,30 +108,27 @@
             <h2 class="section-title fade-in">Kerncompetenties</h2>
             <div class="skills-grid">
                 <div class="skill-card fade-in">
-                    <h4>Mechanical Engineering</h4>
-                    <p>Ontwerp, analyse en realisatie van mechanische systemen met o.a. SOLIDWORKS.</p>
-                </div>
-                <div class="skill-card fade-in">
                     <h4>Electrical Engineering</h4>
-                    <p>Ontwerp en implementatie van elektrische schema's met E-plan en NEN-3140 VP.</p>
-                </div>
-                <div class="skill-card fade-in">
-                    <h4>Software Development</h4>
-                    <p>PLC-programmering (Tia Portal, Codesys) en front-end webontwikkeling (HTML, CSS, JS).</p>
+                    <p>Engineering van industriële besturingssystemen en schema-ontwerp conform E-plan en NEN-3140 normen.</p>
                 </div>
                 <div class="skill-card fade-in">
                     <h4>Project Management</h4>
-                    <p>Ervaring met Scrum en het leiden van technische projecten van concept tot realisatie.</p>
+                    <p>Volledige begeleiding van technische projecten; van het eerste idee tot de oplevering.</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <h4>Software Development</h4>
+                    <p>Programmeren van machines met PLC (TIA Portal) en diepere code in C++.</p>
+                </div>
+            <div class="skill-card fade-in">
+                    <h4>Mechanical Engineering</h4>
+                    <p>Ontwerp en optimalisatie van mechanische systemen; van conceptuele analyse tot volledige realisatie in SOLIDWORKS.</p>
                 </div>
             </div>
         </section>
 
         <section id="ervaringen">
             <h2 class="section-title fade-in">Ervaring met Programma's</h2>
-            
-            <!-- De container die zorgt dat de balk niet buiten het scherm steekt -->
             <div class="experience-container">
-                <!-- De grid die oneindig ronddraait -->
                 <div class="experience-grid">
                     <div class="experience-card fade-in">
                         <img src="Images/Eplan.png" alt="E-Plan">
@@ -153,42 +167,94 @@
     
     <dialog id="destinus-modal" class="modal">
         <div class="modal-content">
-            <h3>Afstudeerstage Destinus</h3>
-            <p>Tijdens mijn afstudeerperiode heb ik stage gelopen bij Destinus. Hier heb ik gewerkt aan het engineeren en realiseren van een kostenefficiënte dieseltoevoerunit voor de OP16-gasturbine die ze produceren. <br /><br />Bij het uitvoeren van deze opdracht heb ik gebruikgemaakt van en kennis opgedaan over de volgende softwarepakketten:<br />- <strong>SOLIDWORKS</strong>: Realiseren van het 3D tekeningenpakket<br />- <strong>E-plan</strong>: Realiseren van het elektrische schemapakket<br />- <strong>Tia Portal</strong>: schrijven van de software voor het uitvoeren van de tests<br /><br />Het resultaat van de opdracht is beoordeeld met een 9.</p>
+            <h3>Afstudeerproject & Engineering — Destinus</h3>
+            
+            <p>Tijdens mijn afstudeerperiode heb ik de volledige engineering en realisatie van een <strong>kostenefficiënte dieseltoevoerunit</strong> voor de OP16-gasturbine verzorgd. Dit project omvatte het 3D-tekenpakket in <strong>SOLIDWORKS</strong>, de elektrische schema's in <strong>EPLAN</strong> en de besturingssoftware in <strong>TIA Portal</strong>. De opdracht werd beoordeeld met een <strong>9</strong>.</p>
+
+            <p>Na mijn afstuderen heb ik direct bijgedragen aan de <strong>OP16-gasturbine zelf</strong>, waarbij ik verantwoordelijk was voor het optimaliseren van de <strong>User Interface (UI)</strong> en het implementeren van een geavanceerd <strong>alarmsysteem</strong> voor de gehele turbine-installatie.</p>
+            
+            <p style="font-style: italic; font-size: 0.9em; color: #888;">* Overige informatie over de werkzaamheden bij Destinus is vertrouwelijk.</p>
+            
             <button class="modal-close-btn" aria-label="Sluiten">Sluiten</button>
         </div>
     </dialog>
 
     <dialog id="engineero-modal" class="modal">
-        <div class="modal-content">
-            <h3>Engineero</h3>
-            <p>In mijn bijbaan bij Engineero heb ik verschillende opdrachten uitgevoerd. Mijn eerste opdracht was het opstellen van een verbeteringsplan voor een industrieel weefgetouw bij Solmax. Mijn tweede opdracht was bij Demcon/DUI, waar ik ondersteuning heb geleverd bij de overgang naar E-plan. Hierbij heb ik gewerkt aan het overzetten van het huidige E-schema naar E-plan en heb ik verbeteringen aangedragen en geïntegreerd. Daarnaast heb ik bij Engineero de volgende certificaten behaald: <strong>NEN-3140 VP</strong> en <strong>E-plan P8 basis training deel 1</strong>.</p>
-            <button class="modal-close-btn" aria-label="Sluiten">Sluiten</button>
+    <div class="modal-content">
+        <h3>Project Engineer — Engineero</h3>
+        
+        <p>
+            In mijn functie bij <strong>Engineero</strong> heb ik diverse technische opdrachten uitgevoerd voor externe 
+            opdrachtgevers, waarbij de focus lag op procesoptimalisatie en elektrotechnische engineering.
+        </p>
+
+        <div class="highlight-box">
+            <strong>Projecten & Resultaten:</strong>
+            <ul style="margin-top: 10px; padding-left: 20px;">
+                <li><strong>Solmax:</strong> Opstellen van een integraal verbeteringsplan voor een industrieel weefgetouw.</li>
+                <li><strong>Demcon / DUI:</strong> Begeleiding van de transitie naar <strong>EPLAN</strong>, inclusief het converteren en optimaliseren van complexe elektrische schema's.</li>
+            </ul>
         </div>
+        <button class="modal-close-btn" aria-label="Sluiten" style="margin-top: 2rem;">Sluiten</button>
+    </div>
     </dialog>
     
     <dialog id="saxion-modal" class="modal">
         <div class="modal-content">
-            <h3>Opleiding Mechatronica (HBO)</h3>
-            <p>Na het behalen van mijn mbo-diploma heb ik ervoor gekozen om verder te studeren. Dit leidde tot het volgen van de bacheloropleiding mechatronica aan het Saxion. Belangrijke punten: Propedeuse cum laude behaald en de minor Industriële Automatisering gevolgd. Kennis opgedaan van o.a. <strong>RobotStudio</strong>, <strong>Codesys</strong>, en <strong>Visual Studio (C++)</strong>.</p>
-            <button class="modal-close-btn" aria-label="Sluiten">Sluiten</button>
+            <h3>Bachelor Mechatronica (HBO) — Saxion</h3>
+            
+            <p>
+                Na het succesvol afronden van mijn MBO-opleiding heb ik de overstap gemaakt naar het HBO om mijn technische expertise te verdiepen. Deze brede bachelor combineert werktuigbouwkunde, elektrotechniek en software engineering.
+            </p>
+
+            <div class="highlight-box">
+                <strong>Academische Prestaties:</strong>
+                <ul style="margin-top: 10px; padding-left: 20px;">
+                    <li><strong>Propedeuse:</strong> Cum Laude behaald (binnen het eerste jaar).</li>
+                    <li><strong>Minor:</strong> Specialisatie in <strong>Industriële Automatisering</strong>.</li>
+                    <li><strong>Doorstroom:</strong> Succesvolle transitie van MBO naar HBO Bachelor.</li>
+                </ul>
+            </div>
+            <button class="modal-close-btn" aria-label="Sluiten" style="margin-top: 2rem;">Sluiten</button>
         </div>
     </dialog>
 
     <dialog id="europastry-modal" class="modal">
-        <div class="modal-content">
-            <h3>Europastry</h3>
-            <p>Begonnen als stagiair en doorgegroeid tot monteur in de technische dienst. Mijn taken bestonden voornamelijk uit preventief onderhoud aan het machinepark en het verhelpen van storingen. In mijn laatste jaar heb ik ook ervaring opgedaan op de afdeling engineering, met een focus op bezuinigingsmogelijkheden van shockfreezers.</p>
-            <button class="modal-close-btn" aria-label="Sluiten">Sluiten</button>
-        </div>
-    </dialog>
+    <div class="modal-content">
+        <h3>Monteur Technische Dienst — Europastry</h3>
+        
+        <p>
+            Begonnen als stagiair en doorgegroeid naar een verantwoordelijke rol als Project Engineer. In deze periode heb ik diepgaande praktijkkennis opgedaan van grootschalige productielijnen.
+        </p>
 
-    <dialog id="roc-modal" class="modal">
-        <div class="modal-content">
-            <h3>Opleiding Mechatronica (MBO)</h3>
-            <p>Tijdens mijn VMBO-opleiding ontdekte ik mijn interesse in techniek, wat leidde tot mijn keuze voor de opleiding mechatronica aan het ROC van Twente. Hier heb ik het mbo-hbo traject gevolgd en kennis opgedaan van softwarepakketten als <strong>RobotStudio</strong>, <strong>Tia Portal</strong> en <strong>E-plan</strong>.</p>
-            <button class="modal-close-btn" aria-label="Sluiten">Sluiten</button>
+        <div class="highlight-box">
+            <strong>Kernactiviteiten:</strong>
+            <ul style="margin-top: 10px; padding-left: 20px;">
+                <li><strong>Onderhoud:</strong> Uitvoeren van preventief onderhoud en het oplossen van complexe, acute storingen aan het machinepark.</li>
+                <li><strong>Engineering:</strong> Onderzoek naar bezuinigingsmogelijkheden en efficiëntieverbeteringen voor industriële shockfreezers.</li>
+            </ul>
         </div>
+        <button class="modal-close-btn" aria-label="Sluiten" style="margin-top: 2rem;">Sluiten</button>
+    </div>
+</dialog>
+
+<dialog id="roc-modal" class="modal">
+    <div class="modal-content">
+        <h3>Opleiding Mechatronica (MBO 4) — ROC van Twente</h3>
+        
+        <p>
+            Mijn basis in de techniek is gelegd tijdens mijn MBO-opleiding, waar ik direct koos voor het uitdagende <strong>MBO-HBO traject</strong> om mezelf optimaal voor te bereiden op verdere studie.
+        </p>
+
+        <div class="highlight-box">
+            <strong>Focuspunten:</strong>
+            <ul style="margin-top: 10px; padding-left: 20px;">
+                <li><strong>Traject:</strong> Versnelde doorstroomroute richting het HBO.</li>
+                <li><strong>Basis Engineering:</strong> Eerste fundament gelegd voor elektrotechnisch tekenen en PLC-logica.</li>
+            </ul>
+        </div>
+        <button class="modal-close-btn" aria-label="Sluiten" style="margin-top: 2rem;">Sluiten</button>
+    </div>
     </dialog>
 
 

@@ -72,19 +72,25 @@ Header & Navigation
     width: 100%;
     z-index: 1000;
     pointer-events: none; /* Zorgt dat je door de onzichtbare balk heen kunt klikken */
-    padding: 1rem clamp(1rem, 5vw, 3rem);
+    padding: 1rem 12vw;
 }
 
 .main-nav {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    max-width: 1100px;
-    margin: 0 auto;
+    gap: 1.5rem; /* Zorgt voor de ademruimte tussen het logo en de navigatielinks */
 }
 
 .main-nav .logo {
-    display: none;
+    display: block;
+    pointer-events: auto; /* Zorgt dat het logo klikbaar blijft */
+}
+
+.main-nav .logo img {
+    height: 40px; /* Pas deze waarde aan als je het logo groter of kleiner wilt maken */
+    width: auto;
+    display: block;
 }
 
 .main-nav ul {
@@ -206,9 +212,30 @@ About Section
 */
 #about {
     text-align: center;
-    max-width: 800px;
 }
-#about h2 { margin-bottom: 1rem; }
+#about h2 { margin-bottom: 3rem; }
+
+.about-layout {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr; /* Geeft de tekst meer ruimte en maakt de foto in verhouding kleiner */
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-text {
+    text-align: left;
+}
+
+.about-image {
+    display: flex;
+    justify-content: center;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 350px; /* Zorgt ervoor dat de foto nooit té groot wordt op een groot beeldscherm */
+    border-radius: 12px;
+}
 
 /*
 Experience Timeline
@@ -464,10 +491,16 @@ Responsive Design
 }
 
 @media (max-width: 768px) {
+    .main-header { padding: 1rem 8vw; }
     .main-nav { flex-direction: row; justify-content: flex-end; }
     .main-nav ul li:not(:has(.contact-button)) { display: none; } /* Verbergt de tekstlinks op mobiele schermen, contactknop blijft */
     main > section { padding: 2.5rem clamp(1rem, 5vw, 3rem); }
     
+    .about-layout {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
     /* Herstel de Hero op mobiele schermen voor betere leesbaarheid */
     #hero {
         grid-template-columns: 1fr;
