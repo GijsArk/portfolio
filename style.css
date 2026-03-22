@@ -354,10 +354,21 @@ Experience Marquee (Programma's)
     display: flex;
     gap: 1.5rem;
     width: max-content;
-    animation: marquee 25s linear infinite;
+    /* Animatie wordt pas gestart door JS nadat alle blokjes zijn geladen */
 }
-.experience-grid:hover {
-    animation-play-state: paused;
+.experience-grid.is-animated {
+    animation: marquee var(--marquee-duration) linear infinite;
+}
+
+/* Zorgt dat het hover-effect niet stoort op touchscreens */
+@media (hover: hover) {
+    .experience-grid:hover {
+        animation-play-state: paused;
+    }
+}
+/* Geforceerde pauze voor wanneer je tikt op mobiel */
+.experience-grid.paused-by-touch {
+    animation-play-state: paused !important;
 }
 .experience-card {
     width: 200px; /* Iets kleiner, perfect voor vierkante/ronde software logo's */

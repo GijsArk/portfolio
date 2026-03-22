@@ -117,11 +117,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 experienceGrid.appendChild(clone);
             });
             
+            // 4. Start de animatie dynamisch zodra alle blokken correct zijn geladen
+            // Dit voorkomt "springen" en zorgt voor een constante snelheid op elk scherm
+            const pixelsPerSecond = 100; // Constante en rustige snelheid
+            const distanceToTravel = allCardsToLoop.length * 224; // Exact de helft van de container breedte
+            const animationDuration = distanceToTravel / pixelsPerSecond;
+            
+            experienceGrid.style.setProperty('--marquee-duration', `${animationDuration}s`);
+            experienceGrid.classList.add('is-animated');
+
             // Voegt perfecte touch-ondersteuning toe voor telefoons
             document.addEventListener('touchstart', (e) => {
-                if (e.target.closest('.experience-grid')) {
+                // Pauzeert nu specifiek als je op een programma-blokje tikt
+                if (e.target.closest('.experience-card')) {
                     experienceGrid.classList.add('paused-by-touch');
                 } else {
+                    // Laat weer draaien als je ergens anders op het scherm tikt
                     experienceGrid.classList.remove('paused-by-touch');
                 }
             }, { passive: true });
