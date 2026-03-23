@@ -221,14 +221,6 @@ document.addEventListener('DOMContentLoaded', () => {
         item.addEventListener('click', () => {
             modal.showModal();
         });
-
-        // Close modal via its close button
-        const closeButton = modal.querySelector('.modal-close-btn');
-        if(closeButton) {
-            closeButton.addEventListener('click', () => {
-                modal.close();
-            });
-        }
         
         // Close modal when clicking on the backdrop
         modal.addEventListener('click', (event) => {

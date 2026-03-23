@@ -33,6 +33,12 @@ Global Resets & Typography
     box-sizing: border-box;
 }
 
+/* Custom Text Selection (Zet de site apart) */
+::selection {
+    background-color: var(--accent-color);
+    color: #ffffff;
+}
+
 body {
     background-color: var(--background-color);
     color: var(--text-color);
@@ -64,6 +70,14 @@ a {
     transition: color 0.3s var(--ease-spring);
 }
 a:hover { color: var(--text-color); }
+
+/* Toegankelijkheid: Duidelijke outline voor toetsenbord navigatie */
+:focus-visible {
+    outline: 2px dashed var(--accent-color);
+    outline-offset: 4px;
+    border-radius: 4px;
+    transition: outline-offset 0.2s ease;
+}
 
 main > section {
     padding: 2rem clamp(1rem, 5vw, 3rem); /* Zorgt voor consistente padding aan de zijkanten, schaalt mooi mee op mobiel */
@@ -443,21 +457,10 @@ Modal (Dialog)
     -webkit-backdrop-filter: blur(5px);
 }
 .modal-content h3 { color: var(--accent-color); margin-top: 0; }
-.modal-close-btn {
-    display: inline-block;
-    background: var(--accent-gradient);
-    color: #ffffff;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-top: 1.5rem;
-    font-weight: 500;
-    transition: transform 0.3s var(--ease-spring), box-shadow 0.3s var(--ease-spring);
-}
-.modal-close-btn:hover { 
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+
+/* Optioneel: Voorkomt dat je de website op de achtergrond kunt scrollen als er een pop-up open is */
+body:has(dialog[open]) {
+    overflow: hidden;
 }
 
 /*
@@ -608,15 +611,33 @@ Responsive Design
         width: 200vw; /* Verdubbelt de virtuele breedte, waardoor de foto veel groter kan opschalen op mobiel */
     }
 }
-@media (max-width: 480px) {
+
+@media (max-width: 480px) { /* Mobiele telefoon */
     .footer-content { flex-direction: column; gap: 1.5rem; } /* Iets meer ruimte tussen de elementen in de footer op mobiel */
     
     .modal { padding: 1.5rem; width: 95%; } /* Geeft de tekst meer ademruimte in popups op smalle telefoons */
     .modal-content h3 { font-size: 1.25rem; }
     
-    #hero .hero-content { margin-top: 25vh; } /* Schuift de content naar beneden op mobiele telefoons */
-    #hero h1 { font-size: 2.5rem; }
+    #hero .hero-content { margin-top: 50vh; } /* Schuift de content naar beneden op mobiele telefoons */
+    #hero h1 { font-size: 3rem; }
     #hero .hero-image {
-        width: 200vw; /* Verdubbelt de virtuele breedte, waardoor de foto veel groter kan opschalen op mobiel */
+        width: 300vw; /* Verdriedubbelt de virtuele breedte, waardoor de foto veel groter kan opschalen op mobiel */
     }
+}
+/* 
+Custom Scrollbar (Webkit browsers) 
+Zet de site apart door de standaard lelijke scrollbar te verbergen
+*/
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--background-color);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
 }
