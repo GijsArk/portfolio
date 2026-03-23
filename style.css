@@ -511,7 +511,7 @@ Responsive Design
     .skills-grid { grid-template-columns: repeat(2, 1fr); }
     
     #hero .hero-image {
-        transform: translateX(25vw); /* Verschuift de foto naar rechts zodra het scherm smaller wordt en de foto te dicht op de linker kant komt */
+        transform: translateX(20vw); /* Verschuift de foto naar rechts zodra het scherm smaller wordt en de foto te dicht op de linker kant komt */
     }
 }
 
@@ -539,7 +539,7 @@ Responsive Design
         width: 175vw; /* Container mag weer normaal breed zijn door onze nieuwe schaal-methode */
         background-size: auto 100%; /* Blijft ook op telefoons extra groot */
         background-position: right bottom; /* Reset positie voor mobiel */
-        transform: translateX(80vw); /* Schuift de grote afbeelding iets naar rechts zodat je tekst leesbaar blijft */
+        transform: translateX(60vw); /* Schuift de grote afbeelding iets naar rechts zodat je tekst leesbaar blijft */
     }
     #hero .hero-content {
         padding: 0 8vw;
@@ -554,6 +554,10 @@ Responsive Design
     .modal { padding: 1.5rem; width: 95%; } /* Geeft de tekst meer ademruimte in popups op smalle telefoons */
     .modal-content h3 { font-size: 1.25rem; }
     
+    
     #hero .hero-content { margin-top: 15vh; } /* Schuift de content naar beneden op mobiele telefoons */
     #hero h1 { font-size: 2.5rem; }
+    #hero .hero-image {
+        transform: translateX(25vw); /* Schuift de grote afbeelding iets naar rechts zodat je tekst leesbaar blijft */
+    }
 }
