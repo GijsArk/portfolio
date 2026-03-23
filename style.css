@@ -156,14 +156,16 @@ Hero Section
 }
 #hero .hero-image {
     position: absolute;
-    right: 0;
+    right: auto;
+    left: 75vw;
     bottom: 0;
     width: 100vw;
     height: 100%;
     background-image: linear-gradient(to bottom, rgba(5, 5, 5, 0) 75%, #050505 100%), url("Images/Zakelijk%20uitgesneden%20ZW.png");
     background-size: contain;
-    background-position: right bottom;
+    background-position: center bottom;
     background-repeat: no-repeat;
+    transform: translateX(-50%);
     transition: transform 2.0s var(--ease-spring); /* Zorgt voor een vloeiende overgang bij het herschalen van het scherm */
     z-index: 1;
 }
@@ -510,9 +512,6 @@ Responsive Design
 @media (max-width: 1024px) {
     .skills-grid { grid-template-columns: repeat(2, 1fr); }
     
-    #hero .hero-image {
-        transform: translateX(20vw); /* Verschuift de foto naar rechts zodra het scherm smaller wordt en de foto te dicht op de linker kant komt */
-    }
 }
 
 @media (max-width: 768px) {
@@ -535,12 +534,6 @@ Responsive Design
     #hero {
         height: 100vh;
     }
-    #hero .hero-image {
-        width: 175vw; /* Container mag weer normaal breed zijn door onze nieuwe schaal-methode */
-        background-size: auto 100%; /* Blijft ook op telefoons extra groot */
-        background-position: right bottom; /* Reset positie voor mobiel */
-        transform: translateX(60vw); /* Schuift de grote afbeelding iets naar rechts zodat je tekst leesbaar blijft */
-    }
     #hero .hero-content {
         padding: 0 8vw;
     }
@@ -554,10 +547,6 @@ Responsive Design
     .modal { padding: 1.5rem; width: 95%; } /* Geeft de tekst meer ademruimte in popups op smalle telefoons */
     .modal-content h3 { font-size: 1.25rem; }
     
-    
-    #hero .hero-content { margin-top: 15vh; } /* Schuift de content naar beneden op mobiele telefoons */
+    #hero .hero-content { margin-top: 25vh; } /* Schuift de content naar beneden op mobiele telefoons */
     #hero h1 { font-size: 2.5rem; }
-    #hero .hero-image {
-        transform: translateX(25vw); /* Schuift de grote afbeelding iets naar rechts zodat je tekst leesbaar blijft */
-    }
 }
