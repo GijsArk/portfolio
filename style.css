@@ -204,6 +204,9 @@ Hero Section
     max-width: 800px;
     text-align: left;
     z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 #hero h1 {
     font-size: clamp(3rem, 6vw, 5rem);
@@ -617,9 +620,6 @@ Responsive Design
     #hero .hero-content {
         padding: 0 8vw;
     }
-    #hero .subtitle { 
-        margin-bottom: 2rem; 
-    }
     #hero .hero-image {
         width: 200vw; /* Verdubbelt de virtuele breedte, waardoor de foto veel groter kan opschalen op mobiel */
     }
@@ -632,7 +632,7 @@ Responsive Design
     .modal-content h3 { font-size: 1.25rem; }
     
     #hero .hero-content { margin-top: 25vh; } /* Schuift de content naar beneden op mobiele telefoons */
-    #hero h1 { font-size: 2.5rem; }
+    #hero h1 { font-size: 4rem; } /* Pakt de titel ook op het allerkleinste scherm iets groter uit */
     #hero .hero-image {
         width: 300vw; /* Verdriedubbelt de virtuele breedte, waardoor de foto veel groter kan opschalen op mobiel */
     }
