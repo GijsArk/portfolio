@@ -540,6 +540,9 @@ Responsive Design
     #hero .subtitle { 
         margin-bottom: 2rem; 
     }
+        #hero .hero-image {
+            width: 100vw; /* Verdubbelt de virtuele breedte, waardoor de foto veel groter kan opschalen op mobiel */
+        }
 }
 @media (max-width: 480px) {
     .footer-content { flex-direction: column; gap: 0.5rem; }
