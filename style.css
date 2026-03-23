@@ -19,7 +19,7 @@ Defines the color palette and base font settings for the entire site.
 
 /* Light Mode Variabelen */
 body.light-mode {
-    --background-color: #f8fafc; /* Zacht wit/grijs */
+    --background-color: #b3b0a9; /* Beige */
     --text-color: #0f172a; /* Donkerblauw/grijs voor tekst */
     --text-muted: #475569;
     --card-color: rgba(0, 0, 0, 0.04);
@@ -604,9 +604,9 @@ Responsive Design
     #hero .subtitle { 
         margin-bottom: 2rem; 
     }
-        #hero .hero-image {
-            width: 200vw; /* Verdubbelt de virtuele breedte, waardoor de foto veel groter kan opschalen op mobiel */
-        }
+    #hero .hero-image {
+        width: 200vw; /* Verdubbelt de virtuele breedte, waardoor de foto veel groter kan opschalen op mobiel */
+    }
 }
 @media (max-width: 480px) {
     .footer-content { flex-direction: column; gap: 1.5rem; } /* Iets meer ruimte tussen de elementen in de footer op mobiel */
@@ -616,4 +616,7 @@ Responsive Design
     
     #hero .hero-content { margin-top: 25vh; } /* Schuift de content naar beneden op mobiele telefoons */
     #hero h1 { font-size: 2.5rem; }
+    #hero .hero-image {
+        width: 200vw; /* Verdubbelt de virtuele breedte, waardoor de foto veel groter kan opschalen op mobiel */
+    }
 }
