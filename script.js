@@ -4,6 +4,62 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     /**
+     * Light / Dark Mode Toggle
+     */
+    const themeToggleCheckbox = document.getElementById('checkbox-theme');
+    const mobileThemeToggleCheckbox = document.getElementById('checkbox-theme-mobile');
+
+    // Functie om de thema status en de toggles te synchroniseren
+    function setTheme(isLight) {
+        if (isLight) {
+            document.body.classList.add('light-mode');
+            localStorage.setItem('theme', 'light');
+        } else {
+            document.body.classList.remove('light-mode');
+            localStorage.setItem('theme', 'dark');
+        }
+        if (themeToggleCheckbox) themeToggleCheckbox.checked = isLight;
+        if (mobileThemeToggleCheckbox) mobileThemeToggleCheckbox.checked = isLight;
+    }
+
+    // Pas het thema toe bij het laden van de pagina
+    const savedTheme = localStorage.getItem('theme');
+    setTheme(savedTheme === 'light');
+
+    // Voeg listeners toe aan beide toggles
+    if (themeToggleCheckbox) {
+        themeToggleCheckbox.addEventListener('change', (e) => {
+            setTheme(e.target.checked);
+        });
+    }
+    if (mobileThemeToggleCheckbox) {
+        mobileThemeToggleCheckbox.addEventListener('change', (e) => {
+            setTheme(e.target.checked);
+        });
+    }
+
+    /**
+     * Mobile Menu Logic
+     */
+    const logoBtn = document.querySelector('.main-nav .logo');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileMenuCloseBtn = document.querySelector('.mobile-menu-close');
+    const mobileMenuLinks = document.querySelectorAll('.mobile-nav a');
+
+    if (logoBtn && mobileMenu && mobileMenuCloseBtn) {
+        logoBtn.addEventListener('click', (e) => {
+            // Het logo fungeert alleen als menu-knop als we naar beneden zijn gescrolld
+            if (document.body.classList.contains('scrolled')) {
+                e.preventDefault(); // Voorkom dat de pagina naar #hero springt
+                mobileMenu.classList.add('is-open');
+            }
+        });
+
+        mobileMenuCloseBtn.addEventListener('click', () => mobileMenu.classList.remove('is-open'));
+        mobileMenuLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.remove('is-open')));
+    }
+
+    /**
      * Hero Scroll Animation (Slide right & Fade out)
      */
     const timeline = document.querySelector('.timeline');
@@ -13,13 +69,20 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!isScrolling) {
             window.requestAnimationFrame(() => {
                 
-                // Toggle '.scrolled' class op de body afhankelijk van scroll-positie (voor de contactknop)
-                if (window.scrollY > window.innerHeight * 0.5) {
+                // Toggle '.scrolled' class op de body afhankelijk van scroll-positie (voor de header swipe)
+                if (window.scrollY > 50) {
                     document.body.classList.add('scrolled');
                 } else {
                     document.body.classList.remove('scrolled');
                 }
                 
+                // Toggle '.contact-visible' class op de body op de helft van het scherm (voor de contactknop)
+                if (window.scrollY > window.innerHeight * 0.75) {
+                    document.body.classList.add('contact-visible');
+                } else {
+                    document.body.classList.remove('contact-visible');
+                }
+
                 // Tijdlijn balk (verticale lijn) vullen met kleur o.b.v. scroll
                 if (timeline) {
                     const rect = timeline.getBoundingClientRect();

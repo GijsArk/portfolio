@@ -17,6 +17,15 @@ Defines the color palette and base font settings for the entire site.
     scroll-padding-top: 5rem;
 }
 
+/* Light Mode Variabelen */
+body.light-mode {
+    --background-color: #f8fafc; /* Zacht wit/grijs */
+    --text-color: #0f172a; /* Donkerblauw/grijs voor tekst */
+    --text-muted: #475569;
+    --card-color: rgba(0, 0, 0, 0.04);
+    --border-color: rgba(0, 0, 0, 0.1);
+}
+
 /*
 Global Resets & Typography
 */
@@ -34,7 +43,7 @@ body {
 }
 
 h1, h2, h3, h4 {
-    color: #ffffff;
+    color: var(--text-color);
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: -0.02em;
@@ -54,7 +63,7 @@ a {
     text-decoration: none;
     transition: color 0.3s var(--ease-spring);
 }
-a:hover { color: #ffffff; }
+a:hover { color: var(--text-color); }
 
 main > section {
     padding: 2rem clamp(1rem, 5vw, 3rem); /* Zorgt voor consistente padding aan de zijkanten, schaalt mooi mee op mobiel */
@@ -66,7 +75,7 @@ main > section {
 Header & Navigation
 */
 .main-header {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -103,6 +112,20 @@ Header & Navigation
     pointer-events: auto;
 }
 
+.main-nav ul li {
+    transition: opacity 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+}
+
+/* Animatie voor wanneer de gebruiker naar beneden scrolt */
+body.scrolled .main-nav ul li:not(:has(.contact-button)) {
+    opacity: 0;
+    transform: translateX(-50px); /* Schuift de links duidelijk richting het logo */
+    pointer-events: none;
+}
+body.scrolled .main-nav .logo {
+    cursor: pointer; /* Maakt duidelijk dat het logo nu een knop is */
+}
+
 .main-nav ul li a:not(.contact-button) {
     color: var(--text-muted); /* Gebruikt de subtiele grijze kleur */
     font-weight: 500;
@@ -129,12 +152,12 @@ Header & Navigation
     pointer-events: none;
     transform: translateY(-10px);
 }
-body.scrolled .main-nav a.contact-button {
+body.contact-visible .main-nav a.contact-button {
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
 }
-body.scrolled .main-nav a.contact-button:hover {
+body.contact-visible .main-nav a.contact-button:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
     color: #fff;
@@ -478,6 +501,47 @@ Footer
 }
 .footer-content a { font-weight: 500; }
 
+/* Theme Slider (Header) */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+}
+.theme-icon { opacity: 0.7; }
+.theme-switch {
+    display: inline-block;
+    height: 24px;
+    position: relative;
+    width: 46px;
+}
+.theme-switch input { display: none; }
+.slider {
+    background-color: var(--card-color);
+    border: 1px solid var(--border-color);
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: 0.4s var(--ease-spring);
+    border-radius: 24px;
+}
+.slider:before {
+    background-color: var(--text-color);
+    border-radius: 50%;
+    bottom: 3px;
+    content: "";
+    height: 16px;
+    left: 4px;
+    position: absolute;
+    transition: 0.4s var(--ease-spring);
+    width: 16px;
+}
+input:checked + .slider { background-color: var(--accent-color); border-color: var(--accent-color); }
+input:checked + .slider:before { transform: translateX(20px); background-color: #ffffff; }
+
 /*
 Responsive Design
 */
@@ -517,7 +581,7 @@ Responsive Design
 @media (max-width: 768px) {
     .main-header { padding: 1rem 8vw; }
     .main-nav { flex-direction: row; justify-content: flex-start; }
-    .main-nav ul li:not(:has(.contact-button)) { display: none; } /* Verbergt de tekstlinks op mobiele schermen, contactknop blijft */
+    .main-nav ul li:not(:has(.contact-button)):not(:has(.theme-switch-wrapper)) { display: none; } /* Verbergt de tekstlinks op mobiele schermen, contactknop en theme toggle blijven */
 
     main > section { padding: 2.5rem clamp(1rem, 5vw, 3rem); }
     
@@ -541,11 +605,11 @@ Responsive Design
         margin-bottom: 2rem; 
     }
         #hero .hero-image {
-            width: 100vw; /* Verdubbelt de virtuele breedte, waardoor de foto veel groter kan opschalen op mobiel */
+            width: 200vw; /* Verdubbelt de virtuele breedte, waardoor de foto veel groter kan opschalen op mobiel */
         }
 }
 @media (max-width: 480px) {
-    .footer-content { flex-direction: column; gap: 0.5rem; }
+    .footer-content { flex-direction: column; gap: 1.5rem; } /* Iets meer ruimte tussen de elementen in de footer op mobiel */
     
     .modal { padding: 1.5rem; width: 95%; } /* Geeft de tekst meer ademruimte in popups op smalle telefoons */
     .modal-content h3 { font-size: 1.25rem; }
