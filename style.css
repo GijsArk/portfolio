@@ -631,7 +631,7 @@ Responsive Design
     .modal { padding: 1.5rem; width: 95%; } /* Geeft de tekst meer ademruimte in popups op smalle telefoons */
     .modal-content h3 { font-size: 1.25rem; }
     
-    #hero .hero-content { margin-top: 25vh; } /* Schuift de content naar beneden op mobiele telefoons */
+    #hero .hero-content { margin-top: 35vh; } /* Schuift de content naar beneden op mobiele telefoons */
     #hero h1 { font-size: 4rem; } /* Pakt de titel ook op het allerkleinste scherm iets groter uit */
     #hero .hero-image {
         width: 300vw; /* Verdriedubbelt de virtuele breedte, waardoor de foto veel groter kan opschalen op mobiel */
